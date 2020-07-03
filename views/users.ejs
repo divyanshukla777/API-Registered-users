@@ -1,0 +1,77 @@
+<style>
+
+body {
+  color: #555;
+  background-color: #5B9EED;
+  font-family: sans-serif;
+}
+
+.list-wrapper {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.list {
+  background: #fff;
+  border-radius: 2px;
+  list-style: none;
+  padding: 10px 20px;
+}
+
+.list-item {
+  display: flex;
+  margin: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.list-item :last-child{
+    border-bottom: none;
+  }
+  .list-item image {
+    border-radius: 50%;
+    width: 64px;
+  }
+  .list-item -content{
+    margin-left: 20px;
+  }
+   .list-item a h4, p{
+      margin: 0;
+    }
+    .list-item a h4{
+      margin-top: 10px;
+      font-size: 18px;
+      color:black !important;
+    }
+    p{
+      margin-top: 5px;
+      color: #aaa;
+    }
+  
+
+</style>
+
+<div class="list-wrapper" ng-app="app" ng-controller="MainCtrl as ctrl">
+    <ul class="list">
+        <% 
+           if(users){ 
+            users.forEach(function(data){
+            %> 
+        <li class="list-item">
+                <div>
+                    <img class="list-item-image" src="https://img.icons8.com/fluent/48/000000/user-male-circle.png"/>
+                </div>
+                <div class="list-item-content">  
+          <a href="/users/<%= data.username %>" style="text-decoration: none;"><h4><%= data.username %></h4></a>
+          <p><%= data.email %></p>
+        </div>
+      </li>
+      <%
+             });
+             }
+            else{ 
+         %>
+            <h4>NO DATA TO SHOW</h4>
+            <% } %>
+        </ul>
+        </div>
